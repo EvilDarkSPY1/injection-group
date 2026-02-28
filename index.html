@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Injection Group | Classified</title>
+    <title>Injection Group | Operation Concluded</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Kanit:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Kanit:wght@300;600;800&display=swap" rel="stylesheet">
     <!-- Changed Lucide CDN to a more reliable source for global variable access -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -16,6 +16,7 @@
             --terminal-bg: #000;
             --terminal-glow: 0 0 10px rgba(0, 255, 0, 0.7);
             --alert-red: #ff003c;
+            --winner-gold: #fbbf24;
         }
 
         body {
@@ -75,6 +76,11 @@
             text-shadow: 2px 2px var(--alert-red);
         }
 
+        .glitch-gold {
+            color: var(--winner-gold);
+            text-shadow: 2px 2px var(--alert-red);
+        }
+
         .glitch::before, .glitch::after {
             content: attr(data-text);
             position: absolute;
@@ -124,23 +130,35 @@
             background: rgba(0, 40, 0, 0.9);
         }
 
+        /* Winner Card Special Style */
+        .winner-card {
+            border: 2px solid var(--winner-gold);
+            background: rgba(40, 30, 0, 0.85);
+            box-shadow: 0 0 25px rgba(251, 191, 36, 0.5);
+            animation: pulse-gold 2s infinite;
+        }
+        
+        .winner-card:hover {
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.8);
+            background: rgba(60, 45, 0, 0.95);
+            transform: scale(1.02);
+        }
+
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 15px rgba(251, 191, 36, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(251, 191, 36, 0.8); }
+            100% { box-shadow: 0 0 15px rgba(251, 191, 36, 0.4); }
+        }
+
         /* Buttons */
-        .btn-execute {
-            background: transparent;
-            border: 2px solid var(--alert-red);
-            color: var(--alert-red);
+        .btn-locked {
+            background: rgba(50, 0, 0, 0.5);
+            border: 2px solid #555;
+            color: #888;
             text-transform: uppercase;
             font-weight: bold;
             position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .btn-execute:hover {
-            background: var(--alert-red);
-            color: #000;
-            box-shadow: 0 0 20px var(--alert-red);
+            cursor: not-allowed;
         }
 
         /* Typing cursor */
@@ -169,7 +187,7 @@
         
         <!-- Header -->
         <header class="w-full text-center mb-12 mt-8 border-b border-green-900 pb-8">
-            <div class="text-xs md:text-sm tracking-[0.5em] mb-2 opacity-70">SYSTEM STATUS: COMPROMISED</div>
+            <div class="text-xs md:text-sm tracking-[0.5em] mb-2 opacity-70 text-yellow-500">SYSTEM STATUS: LEADER ACQUIRED</div>
             <h1 class="glitch text-4xl md:text-7xl mb-2 font-mono" data-text="INJECTION GROUP">INJECTION GROUP</h1>
             <p id="typing-text" class="text-lg md:text-xl text-green-400 font-light h-8 font-['Kanit']">
                 <!-- Text will be typed here by JS -->
@@ -180,130 +198,162 @@
         <main class="w-full space-y-16">
 
             <!-- Mission Section -->
-            <section class="border-l-4 border-green-500 pl-6 py-4 bg-black/50 backdrop-blur-sm">
-                <h2 class="text-2xl md:text-3xl font-bold mb-4 flex items-center gap-2">
-                    <i data-lucide="terminal" class="w-6 h-6"></i>
-                    <span class="text-white">MISSION_LOG:</span> 2024-FEB-14
+            <section class="border-l-4 border-yellow-500 pl-6 py-4 bg-black/50 backdrop-blur-sm">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 flex items-center gap-2 text-yellow-500">
+                    <i data-lucide="check-circle" class="w-6 h-6"></i>
+                    <span>MISSION_CONCLUDED:</span> 2024-FEB-14
                 </h2>
                 <p class="text-green-300 font-['Kanit'] text-lg leading-relaxed max-w-3xl">
-                    ตรวจพบความผิดปกติในระบบเซิร์ฟเวอร์หลัก... ดูเหมือนว่า <span class="text-pink-500 font-bold">วันวาเลนไทน์</span> จะเจาะระบบเข้ามา
-                    ทางกลุ่ม Injection Group ต้องการผู้นำคนใหม่ที่จะพาเราฝ่าด่าน Firewall แห่งความรักครั้งนี้ไปให้ได้
+                    การประมวลผลคะแนนโหวตเสร็จสิ้น Firewall แห่งความรักถูกเจาะระบบเรียบร้อยแล้ว
+                    ทางกลุ่ม Injection Group ขอประกาศแต่งตั้งผู้นำคนใหม่ที่จะพาทีมฝ่าฟันทุกระบบปฏิบัติการ
                     <br><br>
-                    จงเลือก... ใครคือ "The One" ที่จะนำทัพ
+                    <span class="text-yellow-400 font-bold">"THE ONE" HAS BEEN CHOSEN.</span>
                 </p>
             </section>
 
-            <!-- Candidates Section -->
+            <!-- Results Section -->
             <section>
                 <div class="flex items-center justify-between mb-8">
-                    <h3 class="text-xl md:text-2xl font-bold border-b border-green-500 pb-2 inline-block">
-                        > SELECT_TARGET_LEADER //
+                    <h3 class="text-xl md:text-2xl font-bold border-b border-yellow-500 pb-2 inline-block text-yellow-500">
+                        > ELECTION_RESULTS // TARGET_LOCKED
                     </h3>
-                    <span class="text-xs animate-pulse text-red-500">ENCRYPTED CONNECTION</span>
+                    <span class="text-xs animate-pulse text-green-500">DECRYPTION SUCCESS</span>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Candidate 1 -->
-                    <div class="hacker-card p-6 rounded-sm relative group">
-                        <div class="absolute top-2 right-2 text-xs border border-green-500 px-1 text-green-500">CLASS: S</div>
-                        <div class="w-16 h-16 bg-green-900/50 rounded-full mb-4 flex items-center justify-center border border-green-500">
-                            <i data-lucide="skull" class="w-8 h-8"></i>
+                <!-- WINNER HIGHLIGHT -->
+                <div class="mb-12">
+                    <div class="winner-card p-8 rounded-sm relative group text-center md:text-left flex flex-col md:flex-row items-center gap-8">
+                        
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-50"></div>
+                        
+                        <div class="absolute top-4 right-4 text-sm border border-yellow-500 px-2 py-1 text-yellow-500 font-bold bg-black/50 backdrop-blur-sm shadow-[0_0_10px_#fbbf24] animate-pulse">
+                            RANK #01: SUPREME LEADER
                         </div>
-                        <h4 class="text-xl font-bold text-white mb-1">01. SILER_X</h4>
-                        <p class="text-sm text-red-400 font-['Kanit'] mb-2 font-bold">ตำแหน่ง: Exploit Researcher</p>
-                        <p class="text-sm text-green-400 font-['Kanit'] mb-2">ฉายา: เทพเจ้าเข้ารหัส</p>
-                        <p class="text-xs text-gray-400 font-['Kanit']">ถนัดเจาะระบบธนาคารหัวใจ เงียบกริบ ไร้ร่องรอย</p>
-                    </div>
 
-                    <!-- Candidate 2 -->
-                    <div class="hacker-card p-6 rounded-sm relative group">
-                        <div class="absolute top-2 right-2 text-xs border border-green-500 px-1 text-green-500">CLASS: A</div>
-                        <div class="w-16 h-16 bg-green-900/50 rounded-full mb-4 flex items-center justify-center border border-green-500">
-                            <i data-lucide="ghost" class="w-8 h-8"></i>
+                        <!-- Winner Icon -->
+                        <div class="w-32 h-32 bg-yellow-900/40 rounded-full flex items-center justify-center border-4 border-yellow-500 shadow-[0_0_20px_#fbbf24] shrink-0">
+                            <i data-lucide="crown" class="w-16 h-16 text-yellow-400"></i>
                         </div>
-                        <h4 class="text-xl font-bold text-white mb-1">02. ReaperAxon</h4>
-                        <p class="text-sm text-red-400 font-['Kanit'] mb-2 font-bold">ตำแหน่ง: Penetration Tester</p>
-                        <p class="text-sm text-green-400 font-['Kanit'] mb-2">ฉายา: ตัวป่วนโค้ด</p>
-                        <p class="text-xs text-gray-400 font-['Kanit']">เน้นทำพัง ไม่เน้นทำเพิ่ม</p>
+                        
+                        <!-- Winner Details -->
+                        <div class="flex-1">
+                            <h4 class="text-4xl md:text-5xl font-extrabold text-white mb-2 glitch glitch-gold font-mono uppercase" data-text="02. ReaperAxon">02. ReaperAxon</h4>
+                            <p class="text-xl text-red-400 font-['Kanit'] mb-3 font-bold border-b border-yellow-900 pb-2 inline-block">ตำแหน่ง: Penetration Tester</p>
+                            <div class="space-y-2 mt-2">
+                                <p class="text-lg text-yellow-400 font-['Kanit'] flex items-center gap-2 justify-center md:justify-start">
+                                    <i data-lucide="zap" class="w-5 h-5"></i> ฉายา: ตัวป่วนโค้ด
+                                </p>
+                                <p class="text-sm text-gray-300 font-['Kanit'] bg-black/40 p-3 border-l-2 border-yellow-500 rounded-r">
+                                    "เน้นทำพัง ไม่เน้นทำเพิ่ม... แต่พังกำแพงระบบได้ราบคาบที่สุด สมศักดิ์ศรีหัวหน้าทีมคนใหม่ของ Injection Group"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OTHER CANDIDATES (Dimmed/Smaller) -->
+                <div class="flex items-center gap-2 mb-6">
+                    <i data-lucide="users" class="w-5 h-5 text-green-500"></i>
+                    <h4 class="text-lg font-bold text-green-500 border-b border-green-800 pb-1">> INJECTION_OPERATORS //</h4>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 opacity-80">
+                    <!-- Candidate 1 -->
+                    <div class="hacker-card p-4 rounded-sm relative group">
+                        <div class="absolute top-2 right-2 text-[10px] border border-green-800 px-1 text-green-600">CLASS: S</div>
+                        <div class="flex items-center gap-4 mb-2">
+                            <div class="w-10 h-10 bg-green-900/30 rounded-full flex items-center justify-center border border-green-700">
+                                <i data-lucide="skull" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-300">01. SILER_X</h4>
+                        </div>
+                        <p class="text-xs text-red-400/80 font-['Kanit'] mb-1 font-bold">Exploit Researcher</p>
+                        <p class="text-xs text-gray-500 font-['Kanit']">ถนัดเจาะระบบธนาคารหัวใจ เงียบกริบ ไร้ร่องรอย</p>
                     </div>
 
                     <!-- Candidate 3 -->
-                    <div class="hacker-card p-6 rounded-sm relative group">
-                        <div class="absolute top-2 right-2 text-xs border border-green-500 px-1 text-green-500">CLASS: S+</div>
-                        <div class="w-16 h-16 bg-green-900/50 rounded-full mb-4 flex items-center justify-center border border-green-500">
-                            <i data-lucide="cpu" class="w-8 h-8"></i>
+                    <div class="hacker-card p-4 rounded-sm relative group">
+                        <div class="absolute top-2 right-2 text-[10px] border border-green-800 px-1 text-green-600">CLASS: S+</div>
+                        <div class="flex items-center gap-4 mb-2">
+                            <div class="w-10 h-10 bg-green-900/30 rounded-full flex items-center justify-center border border-green-700">
+                                <i data-lucide="cpu" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-300">03. MoxyCc</h4>
                         </div>
-                        <h4 class="text-xl font-bold text-white mb-1">03. MoxyCc</h4>
-                        <p class="text-sm text-red-400 font-['Kanit'] mb-2 font-bold">ตำแหน่ง: Social Engineering Specialist</p>
-                        <p class="text-sm text-green-400 font-['Kanit'] mb-2">ฉายา: ปีศาจหลังบ้าน</p>
-                        <p class="text-xs text-gray-400 font-['Kanit']">คุม Server อยู่หมัด ทำงานตลอด 24ชม. ไม่เคยหลับไหล</p>
+                        <p class="text-xs text-red-400/80 font-['Kanit'] mb-1 font-bold">Social Engineering Specialist</p>
+                        <p class="text-xs text-gray-500 font-['Kanit']">คุม Server อยู่หมัด ทำงานตลอด 24ชม. ไม่เคยหลับไหล</p>
                     </div>
 
                     <!-- Candidate 4 -->
-                    <div class="hacker-card p-6 rounded-sm relative group">
-                        <div class="absolute top-2 right-2 text-xs border border-green-500 px-1 text-green-500">CLASS: B</div>
-                        <div class="w-16 h-16 bg-green-900/50 rounded-full mb-4 flex items-center justify-center border border-green-500">
-                            <i data-lucide="code-2" class="w-8 h-8"></i>
+                    <div class="hacker-card p-4 rounded-sm relative group">
+                        <div class="absolute top-2 right-2 text-[10px] border border-green-800 px-1 text-green-600">CLASS: B</div>
+                        <div class="flex items-center gap-4 mb-2">
+                            <div class="w-10 h-10 bg-green-900/30 rounded-full flex items-center justify-center border border-green-700">
+                                <i data-lucide="code-2" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-300">04. Kaeratin</h4>
                         </div>
-                        <h4 class="text-xl font-bold text-white mb-1">04. Kaeratin</h4>
-                        <p class="text-sm text-red-400 font-['Kanit'] mb-2 font-bold">ตำแหน่ง: Malware Analyst</p>
-                        <p class="text-sm text-green-400 font-['Kanit'] mb-2">ฉายา: ผู้ไร้ตัวตน</p>
-                        <p class="text-xs text-gray-400 font-['Kanit']">หาตัวจับยาก ยิ่งหา ยิ่งเจอความว่างเปล่า</p>
+                        <p class="text-xs text-red-400/80 font-['Kanit'] mb-1 font-bold">Malware Analyst</p>
+                        <p class="text-xs text-gray-500 font-['Kanit']">หาตัวจับยาก ยิ่งหา ยิ่งเจอความว่างเปล่า</p>
                     </div>
 
                     <!-- Candidate 5 -->
-                    <div class="hacker-card p-6 rounded-sm relative group">
-                        <div class="absolute top-2 right-2 text-xs border border-green-500 px-1 text-green-500">CLASS: X</div>
-                        <div class="w-16 h-16 bg-green-900/50 rounded-full mb-4 flex items-center justify-center border border-green-500">
-                            <i data-lucide="wifi" class="w-8 h-8"></i>
+                    <div class="hacker-card p-4 rounded-sm relative group">
+                        <div class="absolute top-2 right-2 text-[10px] border border-green-800 px-1 text-green-600">CLASS: X</div>
+                        <div class="flex items-center gap-4 mb-2">
+                            <div class="w-10 h-10 bg-green-900/30 rounded-full flex items-center justify-center border border-green-700">
+                                <i data-lucide="wifi" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-300">05. Mocking_mous</h4>
                         </div>
-                        <h4 class="text-xl font-bold text-white mb-1">05. Mocking_mous</h4>
-                        <p class="text-sm text-red-400 font-['Kanit'] mb-2 font-bold">ตำแหน่ง: Network Intrusion Expert</p>
-                        <p class="text-sm text-green-400 font-['Kanit'] mb-2">ฉายา: สายขาวพิทักษ์รัก</p>
-                        <p class="text-xs text-gray-400 font-['Kanit']">แฮกเพื่อปกป้อง เน้นความปลอดภัยทางใจสูงสุด</p>
+                        <p class="text-xs text-red-400/80 font-['Kanit'] mb-1 font-bold">Network Intrusion Expert</p>
+                        <p class="text-xs text-gray-500 font-['Kanit']">แฮกเพื่อปกป้อง เน้นความปลอดภัยทางใจสูงสุด</p>
                     </div>
 
-                    <!-- Candidate 6 (New) -->
-                    <div class="hacker-card p-6 rounded-sm relative group">
-                        <div class="absolute top-2 right-2 text-xs border border-green-500 px-1 text-green-500">CLASS: S</div>
-                        <div class="w-16 h-16 bg-green-900/50 rounded-full mb-4 flex items-center justify-center border border-green-500">
-                            <i data-lucide="bomb" class="w-8 h-8"></i>
+                    <!-- Candidate 6 -->
+                    <div class="hacker-card p-4 rounded-sm relative group">
+                        <div class="absolute top-2 right-2 text-[10px] border border-green-800 px-1 text-green-600">CLASS: S</div>
+                        <div class="flex items-center gap-4 mb-2">
+                            <div class="w-10 h-10 bg-green-900/30 rounded-full flex items-center justify-center border border-green-700">
+                                <i data-lucide="bomb" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-300">06. Shexler_Disater</h4>
                         </div>
-                        <h4 class="text-xl font-bold text-white mb-1">06. Shexler_Disater</h4>
-                        <p class="text-sm text-red-400 font-['Kanit'] mb-2 font-bold">ตำแหน่ง: Red Team Lead</p>
-                        <p class="text-sm text-green-400 font-['Kanit'] mb-2">ฉายา: จอมทำลายล้าง</p>
-                        <p class="text-xs text-gray-400 font-['Kanit']">เชี่ยวชาญการโจมตีทุกรูปแบบ ระเบิดทุกกำแพงที่ขวางหน้า</p>
+                        <p class="text-xs text-red-400/80 font-['Kanit'] mb-1 font-bold">Red Team Lead</p>
+                        <p class="text-xs text-gray-500 font-['Kanit']">เชี่ยวชาญการโจมตีทุกรูปแบบ ระเบิดทุกกำแพงที่ขวางหน้า</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Valentine's Action Section -->
-            <section class="mt-16 py-12 border-t border-b border-red-900/50 relative overflow-hidden text-center">
+            <!-- Locked Valentine's Action Section -->
+            <section class="mt-16 py-12 border-t border-b border-gray-900/50 relative overflow-hidden text-center bg-black/80">
                 <!-- Decorative BG for this section -->
-                <div class="absolute inset-0 bg-red-900/10 z-0"></div>
+                <div class="absolute inset-0 bg-red-900/5 z-0"></div>
                 
-                <div class="relative z-10">
-                    <div class="inline-block p-2 border border-red-500 mb-6 animate-pulse">
-                        <i data-lucide="heart-crack" class="w-12 h-12 text-red-500"></i>
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="inline-block p-4 rounded-full border border-red-900 mb-6 bg-red-950/30">
+                        <i data-lucide="lock" class="w-12 h-12 text-red-600"></i>
                     </div>
                     
-                    <h2 class="text-3xl md:text-5xl font-bold text-red-500 mb-4 font-mono tracking-tighter">
-                        OPERATION: VALENTINE
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-600 mb-4 font-mono tracking-tighter">
+                        OPERATION: VALENTINE [CLOSED]
                     </h2>
-                    <p class="text-gray-300 font-['Kanit'] mb-8 max-w-xl mx-auto">
-                        เข้าสู่ระบบเพื่อทำการโหวตหัวหน้าทีม ข้อมูลของคุณจะถูกเข้ารหัส SHA-256 
-                        <br>ส่งข้อมูลเข้าสู่ Mainframe โดยตรง
+                    <p class="text-red-500 font-['Kanit'] font-bold text-lg mb-2 max-w-xl mx-auto">
+                        <i data-lucide="alert-triangle" class="inline w-5 h-5 mb-1"></i> ACCESS DENIED: โหวตสิ้นสุดลงแล้ว!
+                    </p>
+                    <p class="text-gray-400 font-['Kanit'] mb-8 max-w-xl mx-auto text-sm">
+                        ห้ามมิให้ผู้ใดพยายามเชื่อมต่อเพื่อแก้ไขข้อมูลเด็ดขาด
+                        ข้อมูลทั้งหมดได้ถูกโอนย้ายและเข้ารหัสขั้นสูงสุดเข้าสู่ Mainframe เรียบร้อยแล้ว
                     </p>
 
-                    <!-- Google Form Link Button -->
-                    <!-- REPLACE THE HREF BELOW WITH YOUR ACTUAL GOOGLE FORM LINK -->
-                    <a href="https://forms.gle/kRJuTeWixXc3uG5S7" target="_blank" class="btn-execute inline-flex items-center gap-3 px-8 py-4 text-xl tracking-widest font-mono rounded hover:scale-105 transform duration-200">
-                        <span>[ EXECUTE_VOTE_PROTOCOL ]</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                    </a>
+                    <!-- Disabled Button -->
+                    <div class="btn-locked inline-flex items-center gap-3 px-8 py-4 text-xl tracking-widest font-mono rounded">
+                        <span>[ SYSTEM_LOCKED ]</span>
+                        <i data-lucide="ban" class="w-5 h-5"></i>
+                    </div>
                     
-                    <div class="mt-4 text-xs text-red-800 font-mono">
-                        WARNING: UNAUTHORIZED ACCESS WILL BE TERMINATED
+                    <div class="mt-6 text-xs text-red-900 font-mono tracking-widest">
+                        ERROR 403: VOTING PROTOCOL TERMINATED
                     </div>
                 </div>
             </section>
@@ -312,7 +362,7 @@
 
         <footer class="mt-20 text-center text-xs text-green-800 font-mono border-t border-green-900 w-full pt-4">
             <p>&copy; 2024 INJECTION GROUP. ALL RIGHTS RESERVED.</p>
-            <p>LOCATION: ENCRYPTED // IP: HIDDEN</p>
+            <p>LEADER: REAPERAXON // STATUS: SECURED</p>
         </footer>
     </div>
 
@@ -349,7 +399,8 @@
             ctx.fillStyle = '#0001'; 
             ctx.fillRect(0, 0, width, height);
 
-            ctx.fillStyle = '#0f0';
+            // Add a slight gold tint to the matrix rain for the winner theme occasionally
+            ctx.fillStyle = Math.random() > 0.98 ? '#fbbf24' : '#0f0';
             ctx.font = '15pt monospace';
 
             ypos.forEach((y, index) => {
@@ -368,8 +419,8 @@
 
         setInterval(matrix, 50);
 
-        // 2. Typing Effect
-        const textToType = "ยินดีต้อนรับสู่พื้นที่ลับเฉพาะ... กรุณาระบุตัวตน";
+        // 2. Typing Effect (Updated for Results)
+        const textToType = "การประมวลผลเสร็จสิ้น... ขอต้อนรับหัวหน้าทีมคนใหม่";
         const typingElement = document.getElementById('typing-text');
         let charIndex = 0;
 
